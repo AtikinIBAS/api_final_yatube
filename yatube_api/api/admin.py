@@ -1,3 +1,8 @@
 from django.contrib import admin
+from posts.models import Follow
 
-# Register your models here.
+
+@admin.register(Follow)
+class FollowAdmin(admin.ModelAdmin):
+    list_display = ('user', 'following')
+    search_fields = ('user__username', 'following__username')
